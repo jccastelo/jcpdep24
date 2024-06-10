@@ -213,3 +213,31 @@ transformacionesAplicadas unExperimento listaDeAnimales = map (aplicarTransforma
 
 tieneLaCapacidad :: Animal -> Capacidad -> Bool
 tieneLaCapacidad unAnimal unaCapacidad = elem unaCapacidad (capacidades unAnimal)
+
+
+
+
+
+
+
+
+--Codigo juli
+
+abecedario :: [Char]
+abecedario = ['a'..'z']
+
+charToString :: Char -> String
+charToString unChar = [unChar]
+
+palabrasDe1Letra :: [String]
+palabrasDe1Letra = map charToString abecedario
+
+prefijarPalabrasConCaracter :: [String] -> Char -> [String]
+prefijarPalabrasConCaracter palabras caracter = map (caracter :) palabras
+
+prefijarPalabrasConCaracteres :: [String] -> [Char] -> [String]
+prefijarPalabrasConCaracteres palabras caracteres = concatMap (prefijarPalabrasConCaracter palabras) caracteres
+
+palabrasDeNLetras :: Int -> [String]
+palabrasDeNLetras 1 = palabrasDe1Letra
+palabrasDeNLetras n = prefijarPalabrasConCaracteres (palabrasDeNLetras (n - 1)) abecedario
