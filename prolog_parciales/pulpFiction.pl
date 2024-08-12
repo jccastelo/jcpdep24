@@ -201,3 +201,30 @@ noCompartenCaracteristicas(Personaje1, Personaje2):-
     intersection(Caracteristicas1, Caracteristicas2, ListaTotal),
     length(ListaTotal, Cantidad),
     Cantidad < 1.
+
+
+/*
+%importe siempre toman un punto asi
+
+duoDiferenciable(UnPersonaje,OtroPersonaje):-
+    esDuo(UnPersonaje,OtroPersonaje),
+    seDiferencian(UnPersonaje,OtroPersonaje).
+duoDiferenciable(UnPersonaje,OtroPersonaje):-
+    esDuo(UnPersonaje,OtroPersonaje),
+    seDiferencian(OtroPersonaje,UnPersonaje).
+
+seDiferencian(UnPersonaje,OtroPersonaje):-
+    caracteristica(UnPersonaje,UnaCaracteristica),
+    caracteristicas(OtroPersonaje,CaracteristicasDelOtro),
+    not(member(UnaCaracteristica,CaracteristicasDelOtro)).
+    
+esDuo(UnPersonaje,OtroPersonaje):-
+    sonAmigos(UnPersonaje,OtroPersonaje).
+esDuo(UnPersonaje,OtroPersonaje):-
+    sonPareja(UnPersonaje,OtroPersonaje).
+
+%esto es lo mas importante, porque te da un elemnto de una lista
+caracteristica(UnPersonaje,Caracteristica):-
+    caracteristicas(UnPersonaje,Caracteristicas),
+    member(Caracteristica,Caracteristicas).
+*/
