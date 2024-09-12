@@ -1,0 +1,47 @@
+import centrales.*
+import ciudades.*
+
+describe "test de las centrales" {
+
+  test "burns con 10 varillas produce 1 Mkwh en springfield." {
+    centralatomica.setVarillasDeUranio(10)
+    assert.equals(1, centralatomica.produccionEnergetica(springfield))
+  }
+
+  test "exBosque con una capacidad de 20 toneladas produce 18.5 Mkwh en springfield." {
+    centralcarbon.setCapacidad(20)
+    assert.equals(18.5, centralcarbon.produccionEnergetica(springfield))
+  }
+
+  test "elSuspiro produce 2 Mkwh en springfield." {
+    assert.equals(2, centraleolica.produccionEnergetica(springfield))
+  }
+
+}
+
+describe "Test de las ciudades" {
+
+  test "Teniendo las centrales anteriores, las centrales contaminantes de Springfield es una colección que adentro tiene sólo a exBosque." {
+    springfield.instalarCentral(centralatomica)
+    springfield.instalarCentral(centralcarbon)
+    springfield.instalarCentral(centraleolica)
+    assert.equals(#{centralcarbon}, springfield.centralesContaminantes())
+  }
+
+  test "Teniendo las centrales anteriores, springfield cubrió su necesidad energética si ésta era de 20 Mkwh." {
+    springfield.instalarCentral(centralatomica)
+    springfield.instalarCentral(centralcarbon)
+    springfield.instalarCentral(centraleolica)
+    springfield.setNecesidadEnergetica(20)
+    assert.that(springfield.cubrioNecesidades())
+  }
+
+  test "Teniendo las centrales anteriores, springfield está al horno si posee una necesidad energética de 30 Mkwh." {
+    springfield.instalarCentral(centralatomica)
+    springfield.instalarCentral(centralcarbon)
+    springfield.instalarCentral(centraleolica)
+    springfield.setNecesidadEnergetica(30)
+    assert.that(springfield.estaAlHorno())
+  }
+
+}
