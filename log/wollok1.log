@@ -2022,10 +2022,4 @@
 {"level":"info","message":"⌛ Building environment","timeElapsed":146,"timestamp":"2024-09-12T20:03:47.604Z"}
 {"level":"info","message":"onRequest - WORKSPACE_URI:file:///home/juancruz/Escritorio/reposUTN/jcpdep24","timestamp":"2024-09-12T20:03:47.638Z"}
 {"level":"info","message":"Removing diagnostics from /home/juancruz/Escritorio/reposUTN/jcpdep24/wollok_tps/se-dice-atomico/src","timestamp":"2024-09-12T20:03:47.705Z"}
-{"level":"info","message":"⌛ Building environment","timeElapsed":233,"timestamp":"2024-09-12T20:14:32.021Z"}
-{"level":"info","message":"⌛ Validating wollok_tps/se-dice-atomico/ciudades.wlk","timeElapsed":278,"timestamp":"2024-09-12T20:14:32.314Z"}
-{"level":"info","message":"⌛ Building environment","timeElapsed":229,"timestamp":"2024-09-12T20:14:39.336Z"}
-{"level":"info","message":"⌛ Validating wollok_tps/se-dice-atomico/testTodo.wtest","timeElapsed":193,"timestamp":"2024-09-12T20:14:39.530Z"}
-{"level":"info","message":"⌛ Validating wollok_tps/se-dice-atomico/ciudades.wlk","timeElapsed":132,"timestamp":"2024-09-12T20:14:39.662Z"}
-{"level":"info","message":"⌛ Building environment","timeElapsed":286,"timestamp":"2024-09-12T20:15:24.980Z"}
-{"level":"info","message":"⌛ Validating wollok_tps/se-dice-atomico/centrales.wlk","timeElapsed":262,"timestamp":"2024-09-12T20:15:25.276Z"}
+
