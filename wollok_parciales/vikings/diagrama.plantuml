@@ -1,0 +1,111 @@
+@startuml vikings
+
+abstract class Vikingo {
+    castaSocial
+    armas
+    oro
+    --
+    castaSocial()
+    armas()
+    sumarArmas(cantidad)
+    sumarOro(cantidad)
+    tieneArmas()
+    {abstract}esProductivo()
+    ascenderSocialmente()
+}
+
+class Soldado extends Vikingo {
+    vidasCobradas
+    --
+    esProductivo()
+    ascenderSocialmente
+}
+
+class Granjero extends Vikingo {
+    hijos
+    hectareas
+    --
+    sumarHijos(cantidad)
+    sumarHectareas(cantidad)
+    esProductivo()
+    tieneMasHectareasQueHijos()
+    ascenderSocialmente()
+}
+
+abstract class CastaSocial {
+    --
+    esProductivo(cantidadDeArmas)
+    {abstract}siguienteCastaSocial()
+    cantidadArmasAlAscender()
+    cantidadHijosAlAscender()
+    cantidadHectareasAlAscender()
+}
+
+object jarl {
+    esProductivo(cantidadDeArmas)
+    siguienteCastaSocial()
+}
+
+object karl {
+    siguienteCastaSocial()
+    cantidadArmasAlAscender()
+    cantidadHijosAlAscender()
+    cantidadHectareasAlAscender()
+}
+
+object thrall {
+    siguienteCastaSocial()
+}
+
+class Expedicion {
+    vikingos []
+    zonasInvadidas []
+    --
+    subirVikingo(vikingo)
+    valeLaPena()
+    cantidadDeVikingos()
+    listaBotines()
+    botinTotal()
+    repartirOro()
+    cantidadDeOroCorrespondiente()
+}
+
+class Capital {
+    defensores
+    factorDeRiqueza
+    --
+    valeLaPena(cantidadDeVikingos)
+    botin()
+}
+
+class Aldea {
+    iglesias
+    --
+    valeLaPena(cantidadDeVikingos)
+    saciaSedDeSaqueo()
+    botin()
+    cantidadDeCrucifijos()
+}
+
+class AldeaAmurallada extends Aldea {
+    cantidadMinimaDeVikingos
+    --
+    valeLaPena()
+}
+
+interface Zona {
+    valeLaPena(cantidadDeVikingos)
+}
+
+Expedicion --> "*" Vikingo
+Expedicion --> "*" Zona
+Capital -u-|> Zona
+Aldea -u-|> Zona
+Vikingo --> CastaSocial
+
+jarl --|> CastaSocial
+karl --|> CastaSocial
+thrall --|> CastaSocial
+
+
+@enduml
