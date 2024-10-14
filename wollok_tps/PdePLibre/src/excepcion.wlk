@@ -1,0 +1,1 @@
+class NoPuedoAgregarAlCarritoException inherits Exception (message= "¡El nivel del usuario no le permite agregar más productos al carrito!") {}
