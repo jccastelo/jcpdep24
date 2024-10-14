@@ -1,0 +1,32 @@
+import src.expedicion.*
+import src.vikingos.*
+import src.Zonas.*
+import src.castaSocial.*
+
+describe "punto 1" {
+
+    test "No se pudo subir a un vikingo a la expedicion" {
+      const ragnar = new Soldado(castaSocial = thrall, armas = 1, oro= 100, vidasCobradas = 19)
+      const expedicion = new Expedicion()
+      assert.throwsException({expedicion.subirVikingo(ragnar)})
+  }
+}
+
+describe "punto 2" {
+    test "Una expedicion vale la pena" {
+      const ragnar = new Soldado(castaSocial = thrall, armas = 3, oro=100, vidasCobradas = 38)
+      const rollo = new Soldado(castaSocial = karl, armas = 2, oro=25, vidasCobradas = 22)
+      const normandia = new Capital(defensores = 2, factorDeRiqueza = 10)
+      const jerusalen = new AldeaAmurallada(iglesias=18, cantidadMinimaDeVikingos=1)
+      const expedicion = new Expedicion(vikingos=[ragnar,rollo], zonasInvadidas=[normandia,jerusalen])
+      assert.that(expedicion.valeLaPena())
+    }
+}
+
+describe "punto 5" {
+  test "ragnar asciende socialmente" {
+    const ragnar = new Soldado(castaSocial = karl, armas = 1, oro=15, vidasCobradas = 38)
+    ragnar.ascenderSocialmente()
+    assert.equals(thrall, ragnar.castaSocial())
+  }
+}

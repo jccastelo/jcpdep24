@@ -1,0 +1,46 @@
+@startuml gameflix
+abstract class Juego {
+    nombre
+    precio
+    categoria
+    --
+    perteneceACategoria(unaCategoria)
+    seLlama(unNombre)
+    {abstract} afectarA(unCliente, unasHoras)
+}
+
+class JuegoViolento extends Juego {
+
+}
+
+class Moba extends Juego {
+
+}
+
+class JuegoDeTerror extends Juego {
+
+}
+
+class JuegoEstrategico extends Juego {
+
+}
+
+class Cliente {
+    --
+    pagarSuscripcion()
+}
+
+object gameflix {
+    juegos
+    --
+    juegosDeCategoria(unaCategoria)
+    juegoQueSeLlama(unNombre)
+    juegoRecomendado()
+    cobrarSuscripciones()
+}
+
+gameflix --> "*" Juego : juegos
+gameflix --> "*" Cliente : clientes
+Cliente -d-> Suscripcion
+
+@enduml

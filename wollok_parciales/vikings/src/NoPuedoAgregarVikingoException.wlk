@@ -1,0 +1,1 @@
+class NoPuedoAgregarVikingoException inherits Exception {}
