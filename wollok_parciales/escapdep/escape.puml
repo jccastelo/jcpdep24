@@ -1,0 +1,88 @@
+@startuml escapepdep {
+    abstract class Sala {
+        nombre
+        dificultad
+        --
+        nombre()
+        precio()
+        {abstract}adicional()
+        esSalaDificil()
+    }
+
+    class SalaAnime extends Sala {
+        --
+        adicional()
+    }
+
+    class SalaHistoria extends Sala {
+        basadaEnHechosReales
+        --
+        adicional()
+        esSalaDificil()
+    }
+
+    class SalaTerror extends Sala {
+        sustos
+        --
+        adicional()
+        esSalaDificil()
+    }
+
+    class Escapista {
+        maestria
+        salasQueSalio []
+        saldo
+        --
+        saldo()
+        puedePagar(cantidad)
+        descontarSalario(cantidad)
+        agregarSala(sala)
+        puedeSalir(sala)
+        subirNivelMaestria()
+        nombreSalasQueSalio()
+    }
+
+    interface Maestria {
+        siguienteNivel()
+        puedeSalir(esSalaDificil, hizoMuchasSalas)
+    }
+
+    object amateur {
+        siguienteNivel
+        --
+        siguienteNivel()
+        puedeSalir(esSalaDificil, hizoMuchasSalas)
+    }
+
+    object profesional {
+        siguienteNivel
+        --
+        siguienteNivel()
+        puedeSalir(esSalaDificil, hizoMuchasSalas)
+    }
+
+    class Grupo {
+        equipo []
+        sala
+        --
+        sala()
+        sala(nuevaSala)
+        puedeEscapar()
+        escapar()
+        pagar()
+        cantidadDeIntegrantes()
+        registrarEnCadaIntegrante()
+        puedenPagar()
+        todosTienenSuficiente(cantidad)
+        sumaTotalSupera(cantidad)
+    }
+
+    Grupo --> "*" Escapista
+    Grupo --> Sala
+
+    Escapista --> Maestria
+    Escapista ..> Sala
+
+    profesional .u.|> Maestria
+    amateur .u.|> Maestria
+}
