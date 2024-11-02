@@ -1,0 +1,72 @@
+@startuml forSale 
+
+    object inmobiliaria {
+        operaciones []
+    }
+
+    object alquiler {
+        mesesDeContrato
+        --
+        comisionDelAgente(valorDeInmueble)
+    }
+
+    object venta {
+        porcentajeInmueble
+        --
+        portencajeInmueble(nuevoValor)
+        comisionDelAgente(valorDeInmueble)
+    }
+
+    interface TipoDeOperacion {
+        comisionDelAgente(valorDeInmueble)
+    }
+
+    abstract class Inmueble {
+        tamanio
+        cantidadDeAmbientes
+        operacion
+        ubicacion
+        --
+        valorDelInmueble()
+    }
+
+    class Casa extends Inmueble {
+        valorDeLaCasa
+        --
+        valorDelInmueble()
+    }
+
+    class PH extends Inmueble {
+        --
+        valorDelInmueble()
+    }
+
+    class Departamento extends Inmueble {
+        --
+        valorDelInmueble()
+    }
+
+    class Ubicacion {
+        valorAgregado
+        --
+        valorAgregado()
+    }
+
+    class Cliente {
+        --
+        solicitarReservaA(unEmpleado, unaPropiedad)
+        solicitarConcretarA(unEmpleado, unaPropiedad)
+    }
+
+    alquiler --|> TipoDeOperacion
+    venta --|> TipoDeOperacion
+
+    inmobiliaria --> "*" Operacion
+
+    Inmueble -> TipoDeOperacion
+    Inmueble -> Ubicacion
+
+
+
+
+@enduml
