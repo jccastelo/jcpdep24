@@ -1,0 +1,100 @@
+@startuml suenios 
+
+class Persona {
+    edad 
+    carreraQueQuiereEstudiar
+    plataQueQuiereGanar
+    lugaresQueQuiereViajar []
+    hijos
+    felicidonios
+    suenios []
+    carrerasRealizadas[]
+    tipoDePersona
+    --
+    tipoDePersona(tipo)
+    aumentarFelicidad(cantidad)
+    cumplirSuenio(suenio)
+    carreraQueQuiereEstudiar()
+    carrerasRealizadaS()
+    agregarCarreras(carrera)
+    hijos()
+    agregarHijos(cantidad)
+    plataQueQuiereGanar()
+    cumplirSuenio(suenio)
+    cumplirSueniosMultiples(listaDeSuenios)
+    cumplirSuenioElegido()
+    sueniosPendientes()
+    sueniosCumplidos()
+    felicidoniosSueniosPendientes()
+    esFeliz()
+    esAmbiciosa()
+    sueniosAmbiciosos()
+    cantidadDeSueniosAmbiciosos()
+}
+
+interface tipoDePersona {
+    elegirSuenio(listaDeSuenios)
+}
+
+object personaRealista {
+    elegirSuenio(listaDeSuenios)
+}
+
+object personaAlocada {
+    elegirSuenio(listaDeSuenios)
+}
+
+object personaObsesiva {
+    elegirSuenio(listaDeSuenios)
+}
+
+abstract class Suenio {
+    cumplido
+    felicidonios
+    --
+    estaPendiente()
+    estaCumplido()
+    serCumplido(persona)
+    felicidad()
+    esAmbicioso()
+    {abstract} puedeCumplirlo(persona)
+}
+
+class SuenioCarrera extends Suenio {
+    carrera
+    --
+    carrera()
+    puedeCumplirlo(persona)
+    serCumplido(persona)
+}
+
+class SuenioAdoptarHijos extends Suenio {
+    cantidad
+    --
+    puedeCumplirlo(persona)
+    serCumplido(persona)
+}
+
+class SuenioViajar extends Suenio{
+    destino
+    --
+    puedeCumplirlo(persona)
+}
+
+class SuenioLaburo extends Suenio {
+    sueldo
+    --
+    puedeCumplirlo(persona)
+}
+
+personaRealista .u.|> tipoDePersona
+personaAlocada .u.|> tipoDePersona
+personaObsesiva .u.|> tipoDePersona
+
+Persona --> tipoDePersona
+Persona --> "*" Suenio
+
+tipoDePersona ..> Suenio
+Suenio .u.> Persona
+
+@enduml
