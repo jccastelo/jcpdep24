@@ -1,0 +1,14 @@
+import src.artistas.*
+import src.excepciones.*
+import src.impdep.*
+import src.peliculas.*
+
+describe "Tests " {
+    test "nose" {
+        const po = new Artista(experiencia=estrella, cantidadDePeliculasQueActuo=0,ahorros=0)
+        const tigresa = new Artista(experiencia=establecida, cantidadDePeliculasQueActuo=0,ahorros=0)
+        const shifu = new Artista(experiencia=amateur, cantidadDePeliculasQueActuo=0,ahorros=0)
+        const kungfupanda = new Accion(nombre="Kung Fu Panda", elenco=[po, tigresa, shifu],vidriosRotos=0)
+        assert.that(kungfupanda.esEconomica())
+    }
+}
