@@ -1,0 +1,1 @@
+class NoPuedoRecategorizarException inherits Exception(message="No se puede recategorizar la experiencia si ya está en estrella."){}
