@@ -1,0 +1,17 @@
+@startuml intensamente
+
+object riley {
+    felicidad
+    emocionDominante
+    recuerdosDelDia []
+    --
+    vivirEvento()
+}
+
+class Recuerdo {
+    descripcion
+    fecha
+    emocionDominante
+}
+
+@enduml
