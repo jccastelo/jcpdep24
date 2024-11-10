@@ -1,0 +1,96 @@
+@startuml dbz
+
+class Guerrero {
+    potencialOfensivo
+    nivelDeExperiencia
+    nivelDeEnergiaInicial
+    nivelDeEnergia
+    tipoDeTraje
+    --
+    potencialOfensivo()
+    aumentarExperiencia(cantidad)
+    disminuirEnergia(porcentaje)
+    atacar(otroGuerrero)
+    serAtacado(puntosDeFuerza)
+    resistencia()
+    comerSemillaDelErmitanio()
+    elementosEnSuTraje()
+}
+
+abstract class Traje {
+    nivelDeDesgaste
+    --
+    efectoDelTrajeEnergia()
+    efectoDelTrajeExperiencia()
+    serUsado()
+    estaGastado()
+    elementosDelTraje()
+}
+
+class TrajeComun extends Traje {
+    porcentajeDeProteccion
+    --
+    efectoDelTrajeEnergia()
+}
+
+class TrajeDeEntrenamiento extends Traje {
+    porcentajeAumentoExperiencia
+    --
+    porcentajeAumentoExperiencia(nuevoPorcentaje)
+    efectoDelTrajeExperiencia()
+}
+
+class TrajeModularizado extends Traje {
+    piezas []
+    --
+    efectoDelTrajeEnergia()
+    efectoDelTrajeExperiencia()
+    estaGastado()
+    elementosDelTraje()
+}
+
+class Pieza {
+    porcentajeDeResistencia
+    valorDeDesgaste
+    --
+    porcentajeDeResistencia()
+    estaGastada()
+}
+
+class Saiyajin extends Guerrero {
+    nivelTransformacion
+    --
+    poderOfensivo()
+    resistencia()
+    transformar(estado)
+    comerSemillaDelErmitanio()
+}
+
+class NivelDeTransformacion {
+    porcentajeAumentoResistencia
+    potencialOfensivoTransformado
+    --
+    porcentajeAumentoResistencia()
+    potencialOfensivoTransformado()
+}
+
+object torneo {
+    peleadores #{}
+    --
+    powerISBest()
+    funny()
+    surprise()
+}
+
+
+torneo --> "*" Guerrero
+
+Guerrero --> Traje
+Guerrero ..> Guerrero
+Saiyajin --> NivelDeTransformacion
+
+TrajeModularizado --> "*" Pieza
+
+
+
+@enduml
