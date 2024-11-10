@@ -1,0 +1,65 @@
+@startuml jaguelin
+
+class Ninio {
+    elementos []
+    actitud
+    caramelos
+    --
+    elementos()
+    caramelos()
+    sumarCaramelos(cantidad)
+    capacidadParaAsustar()
+    sumatoriaElementos()
+    asustar(adulto)
+    comerCaramelos(cantidad)
+}
+
+class Adulto {
+    cantidadNiniosQueIntentaronAsustarlo
+    --
+    tolerancia()
+    seAsusta(capacidadDeSustoDelNinio)
+}
+
+class Abuelo extends Adulto {
+    seAsusta(capacidadDeSustoDelNinio)
+}
+
+class AdultoNecio extends Adulto {
+    seAsusta(capacidadDeSustoDelNinio)
+}
+
+class Legion {
+    ninios []
+    --
+    capacidadGrupalParAsustar()
+    caramelosDelGrupo()
+    lider()
+    asustar(unAdulto)
+}
+
+class Barrio {
+    niniosDelBarrio []
+    --
+    topMasCaramelos(tamanioDelTop)
+    top3MasCaramelos()
+    elementosNiniosConMasCaramelos()
+}
+
+class Elemento {
+    sustos
+    --
+    sustos(nuevaCantidad)
+    cuantoAsusta()
+}
+
+Ninio --> "*" Elemento
+Ninio ..> Adulto
+
+Legion --> "*" Ninio
+Legion ..> Adulto
+
+Barrio --> "*" Ninio
+
+
+@enduml
