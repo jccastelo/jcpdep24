@@ -1,0 +1,141 @@
+@startuml angrybirds
+
+object islaPajaros {
+    pajaros #{}
+    --
+    pajarosFuertes()
+    fuerzaDeLaIsla()
+    sesionManejoDeIra()
+    invasionDeCerditos(cantidadDeCerditos)
+    fiestaSorpresa(listaDeHomenajeados)
+    serieDeEventosDesafortunados(cantidadDeCerditos, listaDeHomenajeados)
+    atacar(islaCerdito)
+}
+
+object islaCerditos {
+    obstaculos []
+    --
+    obstaculos()
+    derribar(obstaculo, fuerzaDelPajaro)
+    estaLibreDeObstaculos()
+}
+
+class Pajaro {
+    ira
+    --
+    fuerza()
+    enojarse()
+    tranquilizar()
+}
+
+object red {
+    cantidadDeVecesQueSeEnojo
+    --
+    enojarse()
+    fuerza()
+}
+
+object bomb {
+    topeDeFuerza
+    --
+    topeDeFuerza(nuevaFuerza)
+    fuerza()
+}
+
+object chuck {
+    velocidadActual
+    --
+    enojarse()
+    fuerza()
+    tranquilizar()
+}
+
+object terence {
+    cantidadDeVecesQueSeEnojo
+    multiplicador
+    --
+    multilpicador(nuevoMultiplicador)
+    enojarse()
+    fuerza()
+}
+
+object matilda {
+    huevos []
+    --
+    fuerza()
+    fuerzaDeSusHuevos()
+    enojarse()
+}
+
+class Huevo {
+    peso
+    --
+    fuerzaDelHuevo()
+}
+
+interface obstaculo {
+    resistencia()
+    puedeSerDerribado()
+}
+
+abstract class Pared {
+    ancho
+    --
+    resistencia()
+    {abstract}multiplicador()
+    puedeSerDerribado(fuerzaDelPajaro)
+}
+
+class ParedDeVidrio extends Pared {
+    multiplicador()
+}
+
+class ParedDeMadera extends Pared {
+    multilpicador()
+}
+
+class ParedDePiedra extends Pared {
+    multilpicador()
+}
+
+class CerditoObrero {
+    resistencia()
+    puedeSerDerribado(fuerzaDelPajaro)
+}
+
+abstract class CerditoArmado {
+    resistencia()
+    {abstract}resistenciaDeSuItem()
+    puedeSerDerribado()
+}
+
+class CerditoConCasco extends CerditoArmado {
+    resistenciaDelCasco
+    --
+    resistenciaDeSuItem()
+}
+
+class CerditoConEscudo extends CerditoArmado {
+    resistenciaDelEscudo
+    --
+    resistenciaDeSuItem()
+}
+
+red --|> Pajaro
+bomb --|> Pajaro
+chuck --|> Pajaro
+terence --|> Pajaro
+matilda --|> Pajaro
+
+matilda --> "*" Huevo
+
+Pared ..|> obstaculo
+CerditoObrero ..|> obstaculo
+CerditoArmado .l.|> obstaculo
+
+islaPajaros -r-> "*" Pajaro
+islaPajaros ..> islaCerditos
+
+islaCerditos --> "*" obstaculo
+
+@enduml
