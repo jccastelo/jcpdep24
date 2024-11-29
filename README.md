@@ -1,9 +1,11 @@
 # jcpdep24
 PARCIALES E INFO DE LA MATERIA PARADIGMAS DE SISTEMAS.
+
 Mi resolución, no es seguro que estén correctos.
+
 Los parciales resueltos son todos los subidos en la página de PDEP.
 
-utn facultad regional buenos aires
+UTN facultad regional buenos aires
 
 # Links útiles
 
